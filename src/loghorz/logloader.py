@@ -1,9 +1,6 @@
 import numpy as np
-import matplotlib
-matplotlib.use('TkAgg')
-import matplotlib.pyplot as plt
 
-plt.ion()
+import matplotlib.pyplot as plt
 
 from welly import Well
 
@@ -11,7 +8,7 @@ import welly
 print(welly.__version__)
 
 ki_ret = Well.from_las(
-                 "C:/Users/sydneyp/gitprojects/rvgs_2025_loghorz_test/las_files/HighResolution_full_SelCrv.LAS")
+                 r"C:\Users\sydne\git\xrvgs\loghorz_rvgs_test\las_files\HighResolution_full_SelCrv.LAS")
 # may need to use LASIO to make LAS from v3.0 to v1.2 or v2.0
 
 
