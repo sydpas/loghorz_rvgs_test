@@ -32,7 +32,7 @@ alias = {
 # now we show each measurement (gamma, density, sonic) at various depths
 print(well.df(keys=['Gamma', 'Density', 'Sonic'], alias=alias))
 
-# to identify the middel of the well, we can use a basis
+# to identify the middle of the well, we can use a basis
 print('Looking at a depth of 800-820m...')
 basis = range(800, 821)
 print(well.df(keys=['Gamma', 'Density', 'Sonic'], alias=alias, basis=basis))
@@ -40,21 +40,21 @@ print(well.df(keys=['Gamma', 'Density', 'Sonic'], alias=alias, basis=basis))
 
 tests = {
     'Each': [
-        q.no_flat,
-        q.no_monotonic,
-        q.no_gaps,
+        q.no_flat,  # ensures no constant (flat) values
+        q.no_monotonic,  # no strict increase/decrease
+        q.no_gaps,  # no missing values
     ],
     'Gamma': [
-        q.all_positive,
-        q.all_below(450),
-        q.check_units(['API', 'GAPI']),
+        q.all_positive,  # all positive values
+        q.all_below(450),  # all values are below 450
+        q.check_units(['API', 'GAPI']),  # checks curve units
     ],
     'DT': [
-        q.all_positive,
+        q.all_positive,  # ensures all values are positive (time or velocity)
     ],
     'Sonic': [
-        q.all_between(1, 10000),
-        q.no_spikes(10),          # 10 spikes allowed
+        q.all_between(1, 10000),  # ensures velocity is between 1-10000
+        q.no_spikes(10),  # allows 10 outliers
     ],
 }
 
