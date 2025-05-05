@@ -28,7 +28,7 @@ def main():
             ax.tick_params(axis='x', rotation=0)
 
         plt.tight_layout()
-        plt.savefig(f"../figures/{well_i}_plot.png")  # use ../ not .../
+        plt.savefig(f"../figures/{well_i}_plot.png")  # use ../ for 1 away
         plt.show()
 
 
