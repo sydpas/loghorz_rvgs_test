@@ -39,18 +39,21 @@ for i, curve in enumerate(non_depth_curves):
         df.plot(
             x=curve, y='DEPTH', color='black', title=curve, ax=ax, xlabel=unit,
             linewidth=0.5, marker='o', markersize='0.2', alpha=0.5, legend=False)
+        ax.set_title(curve, fontweight='bold', fontsize=14)
     elif curve == 'GR':
         df.plot(
             x='GR', y='DEPTH', color='black', title=curve, ax=ax, xlabel=unit,
-            linewidth = 0.5, marker = 'o', markersize = '0.2', alpha=0.5, legend=False)
+            linewidth=0.5, marker='o', markersize='0.2', alpha=0.5, legend=False)
         ax.fill_betweenx(df['DEPTH'], df['GR'], 210, facecolor='lightgreen')
         ax.fill_betweenx(df['DEPTH'], df['GR'], 75, facecolor='yellow')
         ax.fill_betweenx(df['DEPTH'], df['GR'], 0, facecolor='white')
         ax.axvline(75, color='black', linewidth=0.5, alpha=0.5)
+        ax.set_title(curve, fontweight='bold', fontsize=14)
     elif curve == 'PE':
         df.plot(
             x='PE', y='DEPTH', color='black', title=curve, ax=ax, xlabel=unit,
             linewidth=0.5, marker='o', markersize='0.2', alpha=0.5, legend=False)
+        ax.set_title(curve, fontweight='bold', fontsize=14)
 
 plt.tight_layout()
 plt.savefig('../../figures/filled_highres.png')
