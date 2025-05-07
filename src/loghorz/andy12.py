@@ -44,7 +44,6 @@ for i, curve in enumerate(non_depth_curves):
         df.plot(
             x='GR', y='DEPTH', color='black', title=curve, ax=ax, xlabel=unit,
             linewidth=0.5, marker='o', markersize='0.2', alpha=0.5, legend=False)
-        ax.fill_betweenx(df['DEPTH'], df['GR'], 210, facecolor='lightgreen')
         ax.fill_betweenx(df['DEPTH'], df['GR'], 75, facecolor='yellow')
         ax.fill_betweenx(df['DEPTH'], df['GR'], 0, facecolor='white')
         ax.axvline(75, color='black', linewidth=0.5, alpha=0.5)
