@@ -1,4 +1,4 @@
-from src.loghorz.logloader_allwell import (
+from src.loghorz.logloader_onewell import (
     ki_ret_well
 )
 
