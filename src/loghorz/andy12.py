@@ -26,7 +26,7 @@ non_depth_curves = [
 
 columns = len(non_depth_curves)
 
-fig, axes = plt.subplots(1, columns, figsize=(columns * 1.5, 8))
+fig, axes = plt.subplots(1, columns, figsize=(columns * 1.3, 12))
 
 for i, curve in enumerate(non_depth_curves):
     ax = axes[i]
