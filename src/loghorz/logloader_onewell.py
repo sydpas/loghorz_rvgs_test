@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib
-matplotlib.use('TkAgg')  # TkAgg is a backend that determines how plots are displayed
 import matplotlib.pyplot as plt
 import welly
 from welly import Well
@@ -19,6 +18,16 @@ def ki_ret_well():
     # curves to be plotted
     curve_list = ki_ret.data
     columns = len(curve_list)
+
+    # tops = ki_ret.sections['TOPS_Data']
+    # top_names = []
+    # top_values = []
+    # for i in tops:
+    #     if i.strip():  # if i is not empty (does not have whitespaces)...
+    #         i_list = i.split()  # split i into parts based on where there is whitespaces into i_list
+    #         if len(i_list) >= 2:  # determines if there is a top name and a top depth
+    #             top_names.append(i_list[0])  # stores names
+    #             top_values.append(i_list[1])  # stores depths
 
     print(ki_ret.data)  # shows all curves/logs
 

@@ -4,8 +4,6 @@ from src.loghorz.logloader_onewell import (
 
 
 import matplotlib.pyplot as plt
-import matplotlib
-matplotlib.use('TkAgg')  # TkAgg is a backend that determines how plots are displayed
 
 
 def main():
@@ -13,7 +11,7 @@ def main():
     ki_ret, curve_list, columns = ki_ret_well()
 
     # now we plot...
-    fig, axes = plt.subplots(1, columns, figsize=(columns * 1.5, 7))
+    fig, axes = plt.subplots(1, columns, figsize=(columns * 1.5, 10))
 
     for i, curve in enumerate(curve_list):
         ax = axes[i]
