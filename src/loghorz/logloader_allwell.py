@@ -13,7 +13,7 @@ def highres_well():
     print(highres.location)
 
     # curves to be plotted
-    curve_list = ['DT', 'GR', 'GRX', 'ILD', 'ILM', 'SFL', 'SP', 'RHOB', 'PE']
+    curve_list = highres.data
     columns = len(curve_list)
 
     return highres, curve_list, columns
@@ -30,7 +30,7 @@ def mainpass_well():
     print(mainpass.location)
 
     # curves to be plotted
-    curve_list = ['GRX', 'DT', 'GR', 'ILD', 'ILM', 'SFL', 'SP', 'RHOB', 'PE']
+    curve_list = mainpass.data
     columns = len(curve_list)
 
     return mainpass, curve_list, columns
@@ -47,7 +47,7 @@ def repsec_well():
     print(repsec.location)
 
     # curves to be plotted
-    curve_list = ['DT', 'GR', 'ILD', 'ILM', 'SFL', 'SP', 'RHOB', 'PE']
+    curve_list = repsec.data
     columns = len(curve_list)
 
     return repsec, curve_list, columns
