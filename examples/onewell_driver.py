@@ -17,7 +17,7 @@ def main():
         ax = axes[i]
         # plot ith curve
         ki_ret.data[curve].plot(
-            ax, linestyle='-', linewidth=1, color=f'C{i}', marker='o', markersize=0.5, alpha=0.4)
+            ax, linestyle='-', linewidth=1, color='black', marker='o', markersize=0.4, alpha=0.5)
         ax.set_title(f'{curve} Log', fontsize=12, fontweight='bold')
         ax.grid(True, linestyle='-', alpha=0.3, linewidth=0.5)
         ax.tick_params(axis='x', rotation=0)

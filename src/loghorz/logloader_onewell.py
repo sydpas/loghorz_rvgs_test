@@ -3,11 +3,13 @@ import matplotlib
 import matplotlib.pyplot as plt
 import welly
 from welly import Well
+import lasio as las
 
 def ki_ret_well():
     # load LAS file
     ki_ret = Well.from_las(
                      r"C:\Users\sydne\git\rvgs\loghorz_rvgs_test\las_files\HighResolution_full_SelCrv.LAS")
+
 
     # display basic info
     print(ki_ret)
