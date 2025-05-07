@@ -14,5 +14,6 @@ plt.fill_betweenx(df['DEPTH'], df['GR'], 75, facecolor='yellow')
 plt.fill_betweenx(df['DEPTH'], df['GR'], 0, facecolor='white')
 plt.axvline(75, color='black', linewidth=0.5, alpha=0.5)
 plt.title('Filled Gamma Curve')
+plt.savefig('../../figures/filled_gamma_curve.png')
 plt.show()
 
