@@ -16,6 +16,9 @@ def main():
     well_tops_list = andy06()
     ax_list, col_list = organize_curves()
 
+    print(f'Groups: {ax_list}')
+    print(f'Columns: {col_list}')
+
     fig, axes = plt.subplots(1, len(ax_list), figsize=(len(ax_list) * 4, 14))
 
     # zip pairs up elements from 2 lists and brings them together
@@ -27,25 +30,26 @@ def main():
                 ax.axhline(y=y, color='red', lw=2, ls='-')
 
         # creating a new x-axis on the top for next curve but for same graph
-        ax2 = ax.twiny() if len(curves) > 1 else None
+        ax2 = ax.twiny()
+        ax3 = ax.twiny()
 
-        colors = ['red', 'purple', 'blue', 'green', 'orange']
+        colors = ['blue', 'purple', 'red', 'green', 'orange']
         color_index = 0
 
         for j, curve in enumerate(curves):
             print(f'Plotting curve: {curve}...')
             if curve == 'GR':
                 df.plot(
-                    x='GR', y='DEPTH', color='black', ax=ax,
+                    x=curve, y='DEPTH', color='black', ax=ax,
                     linewidth=0.5, marker='o', markersize=0.2, alpha=0.5, label='GR')
-                ax.fill_betweenx(df['DEPTH'], df['GR'], 75, facecolor='yellow')
-                ax.fill_betweenx(df['DEPTH'], df['GR'], 0, facecolor='white')
+                ax.fill_betweenx(df['DEPTH'], df[curve], 75, facecolor='yellow')
+                ax.fill_betweenx(df['DEPTH'], df[curve], 0, facecolor='white')
                 ax.axvline(75, color='black', linewidth=0.5, alpha=0.5)
             else:
                 next_ax = ax2 if j > 0 and ax2 else ax
                 df.plot(
                     x=curve, y='DEPTH', color=colors[color_index], ax=next_ax, label=curve,
-                    linewidth=1, marker='o', markersize=1, alpha=0.5)
+                    linewidth=0.5, marker='o', markersize=0.2, alpha=0.5)
                 color_index = (color_index + 1) % len(colors)
 
         # adjusting proper y limits and x limits
