@@ -11,7 +11,7 @@ def main():
     displayed, and adds background grids.
     """
 
-    # call bg functions
+    # calling all bg functions
     _, _, _, df = andy12()
     well_tops_list = andy06()
     ax_list, col_list = organize_curves()
