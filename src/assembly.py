@@ -9,23 +9,26 @@ def organize_curves():
     """
 
     # call necessary bg functions
-    columns, non_depth_curves, curve_unit_list, df = andy12()
+    _, non_depth_curves, _, _ = andy12()
 
-    for i, curve in enumerate(non_depth_curves, start=0):
-        print(f'{i}: {curve}')
+    # just for knowing the index of all curves
+    # for i, curve in enumerate(non_depth_curves, start=0):
+    #     print(f'{i}: {curve}')
 
     # using the non_depth_curves list, we can group accordingly...
     ax1 = [non_depth_curves[1], non_depth_curves[6]]
-    print(f'ax1: {ax1}')
+    col1 = len(ax1)
     ax2 = [non_depth_curves[3]]
-    print(f'ax1: {ax2}')
+    col2 = len(ax2)
     ax3 = [non_depth_curves[1]]
-    print(f'ax1: {ax3}')
+    col3 = len(ax3)
     ax4 = [non_depth_curves[8], non_depth_curves[7], non_depth_curves[1]]
-    print(f'ax1: {ax4}')
+    col4 = len(ax4)
     ax5 = [non_depth_curves[0]]
-    print(f'ax1: {ax5}')
+    col5 = len(ax5)
+
 
     ax_list = [ax1, ax2, ax3, ax4, ax5]
+    col_list = [col1, col2, col3, col4, col5]
 
-    return ax_list
+    return ax_list, col_list

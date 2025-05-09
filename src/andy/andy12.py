@@ -13,7 +13,7 @@ def andy12():
     """
     las = lasio.read("../las_files/HighResolution_full_SelCrv.LAS")
 
-    df = las.df()  # convert to pandas dataframe
+    df = las.df()  # converting to pandas dataframe
     df['DEPTH'] = df.index  # adding depth column
     # print(f'df describe: {df.describe()}')  # prints stats
 
