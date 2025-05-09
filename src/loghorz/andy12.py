@@ -48,7 +48,7 @@ def main():
 
     columns, non_depth_curves, curve_unit_list, df = andy12()
 
-    fig, axes = plt.subplots(1, columns, figsize=(columns * 1.3, 12))
+    fig, axes = plt.subplots(1, columns, figsize=(columns * 1.2, 12))
 
     for i, curve in enumerate(non_depth_curves):
         ax = axes[i]
