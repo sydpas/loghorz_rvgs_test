@@ -1,13 +1,18 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from io import StringIO
 
 from loghorz.andy12 import (andy12)
 
 well_tops = pd.read_csv('../../csv_files/1506tops.csv')
 
 print(well_tops.head())
+
+well_tops_list = []
+for tops in well_tops:
+    well_tops_list.append(well_tops)
+
+print(f'well tops list: {well_tops_list}')
 
 columns, non_depth_curves, curve_unit_list, df = andy12()  # call bg function
 
@@ -19,12 +24,14 @@ for i, curve in enumerate(non_depth_curves):
         ax.set_yticklabels([])
         ax.set_yticks([])
     unit = curve_unit_list[i + 1]
+    top = well_tops[i + 1]
 
     if curve != 'GR' and curve != 'PE':
         df.plot(
             x=curve, y='DEPTH', color='black', title=curve, ax=ax, xlabel=unit,
             linewidth=0.5, marker='o', markersize='0.2', alpha=0.5, legend=False)
         ax.set_title(curve, fontweight='bold', fontsize=14)
+        ax.axhline(top, color='black', linewidth=0.5, alpha=0.5)
     elif curve == 'GR':
         df.plot(
             x='GR', y='DEPTH', color='black', title=curve, ax=ax, xlabel=unit,
