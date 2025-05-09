@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from loghorz.andy12 import (andy12)
-from loghorz.andy06 import(andy06)
+from andy.andy12 import (andy12)
+from andy.andy06 import(andy06)
 
 
 def main():
