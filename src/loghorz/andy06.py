@@ -8,7 +8,7 @@ def andy06():
     Return:
         well_tops_list: list of all well tops from a CSV file.
     """
-    well_tops = pd.read_csv('../../csv_files/1506tops.csv')
+    well_tops = pd.read_csv('../csv_files/1506tops.csv')
 
     print(well_tops.head())
 

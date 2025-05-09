@@ -11,7 +11,7 @@ def andy12():
          curve_unit_list: list of all curve units excluding depth.
          df: the LAS file converted to a pandas DataFrame.
     """
-    las = lasio.read("../../las_files/HighResolution_full_SelCrv.LAS")
+    las = lasio.read("../las_files/HighResolution_full_SelCrv.LAS")
 
     df = las.df()  # convert to pandas dataframe
     df['DEPTH'] = df.index  # adding depth column
