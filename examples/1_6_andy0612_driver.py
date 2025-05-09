@@ -7,7 +7,7 @@ from assembly import (organize_curves)
 
 def main():
     """
-    This function takes the andy12, andy06, and organize_curves functions and plots combined curves with the tops
+    This function takes the andy12, andy06, and organize_curves functions, and plots GR and SP curves with the tops
     displayed, and adds background grids.
     """
 
