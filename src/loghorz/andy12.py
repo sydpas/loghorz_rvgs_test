@@ -1,28 +1,35 @@
-import pandas as pd
 import matplotlib.pyplot as plt
 import lasio
-import numpy as np
 
 
 def andy12():
+    """
+    This function reads an LAS file and prints various information.
+
+    Returns:
+         columns: length of non_depth_curves list.
+         non_depth_curves: list of curves without depth.
+         curve_unit_list: list of all curve units excluding depth.
+         df: the LAS file converted to a pandas DataFrame.
+    """
     las = lasio.read("../../las_files/HighResolution_full_SelCrv.LAS")
 
     df = las.df()  # convert to pandas dataframe
     df['DEPTH'] = df.index  # adding depth column
-    print(f'df describe: {df.describe()}')  # prints stats
+    # print(f'df describe: {df.describe()}')  # prints stats
 
     curve_list = las.curves
-    print(f'curve list: {curve_list}')
+    # print(f'curve list: {curve_list}')
 
     # mapping curve mnemonic to descrip
     curve_name_dict = {curve.mnemonic: curve.descr for curve in las.curves}
-    print(f'dictionary: {curve_name_dict}')
+    # print(f'dictionary: {curve_name_dict}')
 
     # making list of units
     curve_unit_list = []
     for curve in curve_list:
         curve_unit_list.append(curve.unit)
-    print(f'units: {curve_unit_list}')
+    # print(f'units: {curve_unit_list}')
 
     non_depth_curves = [
         curve_name.mnemonic for curve_name in curve_list if curve_name.mnemonic != 'DEPT'
@@ -35,7 +42,12 @@ def andy12():
 
 
 def main():
+    """
+    This function takes the andy12 and andy06 functions and plots curves.
+    """
+
     columns, non_depth_curves, curve_unit_list, df = andy12()
+
     fig, axes = plt.subplots(1, columns, figsize=(columns * 1.3, 12))
 
     for i, curve in enumerate(non_depth_curves):
