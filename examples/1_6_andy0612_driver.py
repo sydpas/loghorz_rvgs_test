@@ -23,7 +23,7 @@ def main():
     ax1 = ax_list[0]
     col1 = col_list[0]
 
-    fig, ax = plt.subplots(figsize=(col1 * 1.2, 14))
+    fig, ax = plt.subplots(figsize=(col1 * 3, 14))
 
     top = well_tops_list[0]
     for horz, depth in top.items():

@@ -72,7 +72,7 @@ def main():
     ax2.set_xlim(df[ax1[1]].min(), df[ax1[1]].max())
     ax3.set_xlim(df[ax1[2]].min(), df[ax1[2]].max())
 
-    # removing x axis which sometimes works...
+    # removing x axis
     ax.set_xlabel('')
     ax2.set_xlabel('')
     ax3.set_xlabel('')
