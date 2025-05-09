@@ -54,6 +54,16 @@ def main():
     ax.set_xlim(df[ax1[0]].min(), df[ax1[0]].max())
     ax2.set_xlim(df[ax1[1]].min(), df[ax1[1]].max())
 
+    # removing x axis
+    ax.set_xlabel('')
+    ax2.set_xlabel('')
+
+    # The rest of your legend code remains the same
+    lines_1, labels_1 = ax.get_legend_handles_labels()
+    lines_2, labels_2 = ax2.get_legend_handles_labels()
+    ax.legend(lines_1 + lines_2, labels_1 + labels_2, loc='lower left')
+    ax2.get_legend().remove() if ax2.get_legend() else None
+
     # combining the legends and putting bottom left
     lines_1, labels_1 = ax.get_legend_handles_labels()
     lines_2, labels_2 = ax2.get_legend_handles_labels()
