@@ -29,6 +29,9 @@ def main():
         # creating a new x-axis on the top for next curve but for same graph
         ax2 = ax.twiny() if len(curves) > 1 else None
 
+        colors = ['red', 'purple', 'blue', 'green', 'orange']
+        color_index = 0
+
         for j, curve in enumerate(curves):
             print(f'Plotting curve: {curve}...')
             if curve == 'GR':
@@ -41,8 +44,9 @@ def main():
             else:
                 next_ax = ax2 if j > 0 and ax2 else ax
                 df.plot(
-                    x=curve, y='DEPTH', color='blue', ax=next_ax, label=curve,
-                    linewidth=0.5, marker='o', markersize=0.2, alpha=0.5)
+                    x=curve, y='DEPTH', color=colors[color_index], ax=next_ax, label=curve,
+                    linewidth=1, marker='o', markersize=1, alpha=0.5)
+                color_index = (color_index + 1) % len(colors)
 
         # adjusting proper y limits and x limits
         ax.set_ylim(df['DEPTH'].min(), df['DEPTH'].max())
