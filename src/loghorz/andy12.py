@@ -7,16 +7,18 @@ import numpy as np
 def andy12():
     las = lasio.read("../../las_files/HighResolution_full_SelCrv.LAS")
 
-    df = las.df()
-    df['DEPTH'] = df.index
-    print(f'df describe: {df.describe()}')
+    df = las.df()  # convert to pandas dataframe
+    df['DEPTH'] = df.index  # adding depth column
+    print(f'df describe: {df.describe()}')  # prints stats
 
     curve_list = las.curves
     print(f'curve list: {curve_list}')
 
+    # mapping curve mnemonic to descrip
     curve_name_dict = {curve.mnemonic: curve.descr for curve in las.curves}
     print(f'dictionary: {curve_name_dict}')
 
+    # making list of units
     curve_unit_list = []
     for curve in curve_list:
         curve_unit_list.append(curve.unit)
@@ -25,6 +27,7 @@ def andy12():
     non_depth_curves = [
         curve_name.mnemonic for curve_name in curve_list if curve_name.mnemonic != 'DEPT'
             and curve_name.mnemonic in df.columns]
+    # removing the DEPT curve
 
     columns = len(non_depth_curves)
 
