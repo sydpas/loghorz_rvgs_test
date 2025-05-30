@@ -5,6 +5,7 @@ from andy.andy06 import (andy06)
 from assembly import (organize_curves)
 
 
+
 def main():
     """
     This function takes the andy12, andy06, and organize_curves functions, and plots PE, RHOB, and GR curves with the
@@ -57,6 +58,7 @@ def main():
 
             current_ax.axvline(75, color='black', linewidth=0.5, alpha=0.5)
             current_ax.set_xlim(gr_min, gr_max)
+            print(f'{i} curve: {curve}')
 
         else:
             df.plot(
