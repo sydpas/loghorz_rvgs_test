@@ -13,6 +13,7 @@ def main():
     """
 
     # calling all bg functions
+    global current_ax
     _, _, _, df = andy12()
     well_tops_list = andy06()
     ax_list, col_list = organize_curves()
@@ -24,6 +25,7 @@ def main():
 
     # zip pairs up elements from 2 lists and brings them together
     for i, (curves, ax) in enumerate(zip(ax_list, axes)):
+        print(f'Plotting group: {curves}...')
         top = well_tops_list[0]
         for horz, depth in top.items():
             if pd.notna(depth):
@@ -33,7 +35,7 @@ def main():
         if i == 3 and len(curves) == 3:  # handling the fourth group
             ax2 = ax.twiny()
             ax3 = ax.twiny()
-            axes_3 = [ax, ax2, ax3]
+
 
             for j, curve in enumerate(curves):
                 print(f'Plotting curve: {curve}...')
@@ -95,7 +97,6 @@ def main():
 
         # creating a new x-axis on the top for next curve but for same graph
         ax2 = ax.twiny()
-        ax3 = ax.twiny()
 
         colors = ['blue', 'purple', 'red', 'green', 'orange']
         color_index = 0
