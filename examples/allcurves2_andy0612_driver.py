@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from andy.andy12_mainpass import (andy12)
 from andy.andy06 import (andy06)
-from assembly_highres import (organize_curves)
+from assembly_mainpass import (organize_curves)
 
 
 
@@ -98,8 +98,6 @@ def main():
         # creating a new x-axis on the top for next curve but for same graph
         ax2 = ax.twiny()
 
-        colors = ['blue', 'purple', 'red', 'green', 'orange']
-        color_index = 0
 
         for j, curve in enumerate(curves):
             print(f'Plotting curve: {curve}...')
@@ -107,21 +105,26 @@ def main():
                 df.plot(
                     x=curve, y='DEPTH', color='black', ax=ax,
                     linewidth=0.5, marker='o', markersize=0.2, alpha=0.5, label='GR')
-                ax.fill_betweenx(df['DEPTH'], df[curve], 75, facecolor='yellow')
+                ax.fill_betweenx(df['DEPTH'], df[curve], 75, facecolor='yellow', alpha = 0.5)
                 ax.fill_betweenx(df['DEPTH'], df[curve], 0, facecolor='white')
                 ax.axvline(75, color='black', linewidth=0.5, alpha=0.5)
 
             else:
-                next_ax = ax2 if j > 0 and ax2 else ax
+                next_ax = ax2 if j > 0 else ax
                 df.plot(
-                    x=curve, y='DEPTH', color=colors[color_index], ax=next_ax, label=curve,
+                    x=curve, y='DEPTH', ax=next_ax, label=curve,
                     linewidth=0.5, marker='o', markersize=0.2, alpha=0.5)
+                if curve == 'DT':
+                    next_ax.set_xlim(100,500)
+
 
         # adjusting proper y limits and x limits
         ax.set_ylim(df['DEPTH'].min(), df['DEPTH'].max())
         ax.set_xlim(df[curves[0]].min(), df[curves[0]].max())
         if ax2:
             ax2.set_xlim(df[curves[-1]].min(), df[curves[-1]].max())
+
+
 
         # removing x axis which sometimes works...
         ax.set_xlabel('')

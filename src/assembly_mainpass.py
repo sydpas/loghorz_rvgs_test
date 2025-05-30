@@ -12,8 +12,8 @@ def organize_curves():
     _, non_depth_curves, _, _ = andy12()
 
     # just for knowing the index of all curves
-    for i, curve in enumerate(non_depth_curves, start=0):
-        print(f'{i}: {curve}')
+    # for i, curve in enumerate(non_depth_curves, start=0):
+    #     print(f'{i}: {curve}')
 
     # using the non_depth_curves list, we can group accordingly...
     ax1 = [non_depth_curves[2], non_depth_curves[6]]

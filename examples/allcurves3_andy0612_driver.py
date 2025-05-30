@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from andy.andy12_highres import (andy12)
+from andy.andy12_repeat import (andy12)
 from andy.andy06 import (andy06)
-from assembly_highres import (organize_curves)
+from assembly_repeat import (organize_curves)
 
 
 
@@ -139,7 +139,7 @@ def main():
         ax.set_title(' & '.join(curves), fontweight='bold', fontsize=12)
 
     plt.tight_layout()
-    plt.savefig(f'../figures/all_log.png')
+    plt.savefig(f'../figures/all_log3.png')
     plt.show()
 
 
