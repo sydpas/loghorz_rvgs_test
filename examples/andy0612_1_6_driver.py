@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from andy.andy12 import (andy12)
+from andy.andy12_highres import (andy12)
 from andy.andy06 import (andy06)
-from assembly import (organize_curves)
+from assembly_highres import (organize_curves)
 
 
 def main():

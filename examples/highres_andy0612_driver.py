@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from andy.andy12 import (andy12)
+from andy.andy12_highres import (andy12)
 from andy.andy06 import(andy06)
 
 
@@ -13,7 +13,7 @@ def main():
     columns, non_depth_curves, curve_unit_list, df = andy12()
     well_tops_list = andy06()
 
-    fig, axes = plt.subplots(1, columns, figsize=(columns * 1.2, 12))
+    fig, axes = plt.subplots(1, columns, figsize=(columns * 2, 14))
 
     for i, curve in enumerate(non_depth_curves):
         ax = axes[i]
