@@ -36,7 +36,6 @@ def main():
             ax2 = ax.twiny()
             ax3 = ax.twiny()
 
-
             for j, curve in enumerate(curves):
                 print(f'Plotting curve: {curve}...')
                 if curve == 'PE':
@@ -123,8 +122,6 @@ def main():
         ax.set_xlim(df[curves[0]].min(), df[curves[0]].max())
         if ax2:
             ax2.set_xlim(df[curves[-1]].min(), df[curves[-1]].max())
-
-
 
         # removing x axis which sometimes works...
         ax.set_xlabel('')
