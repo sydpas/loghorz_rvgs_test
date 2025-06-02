@@ -24,8 +24,10 @@ def main():
     fig, axes = plt.subplots(1, len(ax_list), figsize=(len(ax_list) * 2, 16))    # zip pairs up elements from 2 lists and brings them together
     for i, (curves, ax) in enumerate(zip(ax_list, axes)):
         print(f'Plotting group: {curves}...')
+        ax.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False, labeltop=False)
+        if i != 0:
+            ax.tick_params(axis='y', which='both', left=False, right=False, labelleft=False, labelright=False)
         top = well_tops_list[0]
-        ax.axhline(y=810, color='black', ls='--', lw=1)  # later for scale bar
         for horz, depth in top.items():
             if pd.notna(depth):
                 y = float(depth)
@@ -36,6 +38,8 @@ def main():
         if i == 3 and len(curves) == 3:  # handling the fourth group
             ax2 = ax.twiny()
             ax3 = ax.twiny()
+            ax2.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False, labeltop=False)
+            ax3.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False, labeltop=False)
 
             for j, curve in enumerate(curves):
                 print(f'Plotting curve: {curve}...')
@@ -50,6 +54,9 @@ def main():
                     df.plot(
                         x='GR', y='DEPTH', color='black', ax=current_ax,
                         linewidth=0.5, marker='o', markersize=0.2, alpha=0.5, label='GR')
+
+                    current_ax.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False, labeltop=False)
+                    current_ax.tick_params(axis='y', which='both', left=False, right=False, labelleft=False, labelright=False)
 
                     gr_min = df[curve].min()
                     gr_max = df[curve].max()
@@ -72,15 +79,11 @@ def main():
 
             # adjusting proper y limits
             ax.set_ylim(df['DEPTH'].min(), df['DEPTH'].max())
+
             # x axis limits
             ax.set_xlim(df[curves[0]].min(), df[curves[0]].max())
             ax2.set_xlim(df[curves[1]].min(), df[curves[1]].max())
             ax3.set_xlim(df[curves[2]].min(), df[curves[2]].max())
-
-            # removing x axis
-            ax.set_xlabel('')
-            ax2.set_xlabel('')
-            ax3.set_xlabel('')
 
             # combining the legends and putting bottom left
             lines_1, labels_1 = ax.get_legend_handles_labels()
@@ -95,12 +98,14 @@ def main():
 
             continue
 
-        # creating a new x-axis on the top for next curve but for same graph
         ax2 = ax.twiny()
-
+        ax2.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False, labeltop=False)
 
         for j, curve in enumerate(curves):
-            print(f'Plotting curve: {curve}...')
+            print(f'Plotting group: {curves}...')
+            ax.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False, labeltop=False)
+            if i != 0:
+                ax.tick_params(axis='y', which='both', left=False, right=False, labelleft=False, labelright=False)
             if curve == 'GR':
                 df.plot(
                     x=curve, y='DEPTH', color='black', ax=ax,
@@ -112,7 +117,7 @@ def main():
             else:
                 next_ax = ax2 if j > 0 and ax2 else ax
                 df.plot(
-                    x=curve, y='DEPTH', ax=next_ax, label=curve,
+                    x=curve, y='DEPTH', color='blue', ax=next_ax, label=curve,
                     linewidth=0.5, marker='o', markersize=0.2, alpha=0.5)
 
         # adjusting proper y limits and x limits
@@ -134,7 +139,7 @@ def main():
             ax2.get_legend().remove() if ax2.get_legend() else None
 
         ax.grid(True, linestyle='-', alpha=0.3, linewidth=0.5)
-        ax.set_title(' & '.join(curves), fontweight='bold', fontsize=12)
+        ax.set_title(' and '.join(curves), fontweight='bold', fontsize=12)
 
     plt.savefig(f'../figures/all_log.png')
     plt.show()
