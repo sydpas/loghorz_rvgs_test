@@ -148,7 +148,7 @@ def main():
         ax.grid(True, linestyle='-', alpha=0.3, linewidth=0.5)
         ax.set_title(' and '.join(curves), fontsize=12)
 
-    plt.suptitle('Well Logs', fontsize=18, fontweight='bold',
+    plt.suptitle('100/15-06-013-18W4/00, KI EXPLORATION INC.', fontsize=18, fontweight='bold',
         bbox=dict(facecolor='lightblue', edgecolor='black', boxstyle='square,pad=2', alpha=0.8))
     plt.savefig(f'../figures/all_log.png')
     plt.show()
