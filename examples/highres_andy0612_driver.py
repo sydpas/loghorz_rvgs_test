@@ -13,7 +13,7 @@ def main():
     columns, non_depth_curves, curve_unit_list, df = andy12()
     well_tops_list = andy06()
 
-    fig, axes = plt.subplots(1, columns, figsize=(columns * 2, 14))
+    fig, axes = plt.subplots(1, columns, figsize=(columns * 1.5, 18))
 
     for i, curve in enumerate(non_depth_curves):
         ax = axes[i]
@@ -28,8 +28,8 @@ def main():
             if pd.notna(depth):
                 y = float(depth)
                 ax.axhline(y=y, color='red', lw=2, ls='-')
-                # if i == 0:
-                #     ax.text(x=20, y=y, s=horz, color='red', fontsize=10, ha='center', va='center')
+                if i == 0:
+                    ax.text(x=75, y=y, s=horz, color='red', fontsize=10, ha='center', va='center')
 
         if curve != 'GR' and curve != 'PE':
             # plotting curves
@@ -56,7 +56,6 @@ def main():
             ax.set_title(curve, fontweight='bold', fontsize=14)
             ax.set_ylim(df['DEPTH'].min(), df['DEPTH'].max())
 
-    plt.tight_layout()
     plt.savefig('../figures/tops_curves_highres.png')
     plt.show()
 

@@ -18,6 +18,6 @@ def andy06():
                 if pd.notna(row[column]) and column != 'UWI'}  # notna skips NaN
         well_tops_list.append(tops)
 
-    # print(f'well tops list: {well_tops_list}')
+    print(f'well tops list: {well_tops_list}')
 
     return well_tops_list

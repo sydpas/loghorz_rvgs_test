@@ -21,21 +21,21 @@ def main():
     print(f'Groups: {ax_list}')
     print(f'Columns: {col_list}')
 
-    fig, axes = plt.subplots(1, len(ax_list), figsize=(len(ax_list) * 5, 14))
-
-    # zip pairs up elements from 2 lists and brings them together
+    fig, axes = plt.subplots(1, len(ax_list), figsize=(len(ax_list) * 2, 16))    # zip pairs up elements from 2 lists and brings them together
     for i, (curves, ax) in enumerate(zip(ax_list, axes)):
         print(f'Plotting group: {curves}...')
         top = well_tops_list[0]
+        ax.axhline(y=810, color='black', ls='--', lw=1)  # later for scale bar
         for horz, depth in top.items():
             if pd.notna(depth):
                 y = float(depth)
-                ax.axhline(y=y, color='red', lw=2, ls='-')
+                ax.axhline(y=y, color='red', lw=1.5, ls='-')
+                if i == 0:
+                    ax.text(x=-10, y=y, s=horz, color='red', fontsize=8, ha='center', va='center')
 
         if i == 3 and len(curves) == 3:  # handling the fourth group
             ax2 = ax.twiny()
             ax3 = ax.twiny()
-
 
             for j, curve in enumerate(curves):
                 print(f'Plotting curve: {curve}...')
@@ -98,8 +98,6 @@ def main():
         # creating a new x-axis on the top for next curve but for same graph
         ax2 = ax.twiny()
 
-        colors = ['blue', 'purple', 'red', 'green', 'orange']
-        color_index = 0
 
         for j, curve in enumerate(curves):
             print(f'Plotting curve: {curve}...')
@@ -114,7 +112,7 @@ def main():
             else:
                 next_ax = ax2 if j > 0 and ax2 else ax
                 df.plot(
-                    x=curve, y='DEPTH', color=colors[color_index], ax=next_ax, label=curve,
+                    x=curve, y='DEPTH', ax=next_ax, label=curve,
                     linewidth=0.5, marker='o', markersize=0.2, alpha=0.5)
 
         # adjusting proper y limits and x limits
@@ -138,7 +136,6 @@ def main():
         ax.grid(True, linestyle='-', alpha=0.3, linewidth=0.5)
         ax.set_title(' & '.join(curves), fontweight='bold', fontsize=12)
 
-    plt.tight_layout()
     plt.savefig(f'../figures/all_log.png')
     plt.show()
 
